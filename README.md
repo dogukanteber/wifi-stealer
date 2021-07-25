@@ -26,4 +26,8 @@ You might need to specify Python version when running the script. If you have Py
 python3 wifi-stealer.py
 ```
 
-After the result is printed to the command line, you can find the password under ```Security settings```, value of ```Key Content```.
+### Output
+
+The output looks like this:
+
+Wireless Name : Wireless Password

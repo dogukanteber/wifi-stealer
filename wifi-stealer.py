@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import subprocess, smtplib, re
+import subprocess, re
 
 command = 'netsh wlan show profiles'
 
@@ -18,6 +18,8 @@ result = ""
 for profile in profiles:
     final_command = "netsh wlan show profile " + profile + " key=clear"
     final_output = subprocess.run(final_command, shell=True, capture_output=True, text=True)
-    result += "Showing results for " + profile + ":\n" + final_output.stdout + "\n"
+    password = re.search("(Content\s*:\s)(.*)", final_output.stdout)
+    if password:
+        result += profile + " : " + password.group(2) + '\n'
     
 print(result)
